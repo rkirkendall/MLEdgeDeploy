@@ -1,7 +1,7 @@
 data: ../mnist.npz
 ml-framework: keras
 build-process:  
-  - python ../keras_cnn.py
+  - python keras_cnn.py
 model-output-file: keras-mnist.h5
 model-metadata-file: keras-mnist-meta.yml
 conversions:
