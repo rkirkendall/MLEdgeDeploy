@@ -12,12 +12,12 @@ def save_keras_coreml(keras_model, model_name):
     print("-- MHBuild: Converting Keras model to CoreML model...")
     coreml_model = coremltools.converters.keras.convert(keras_model)
     fname = '{}.{}'.format(model_name,'mlmodel')
-    fpath = 'output/{}'.format(fname)
+    fpath = 'MHBuild/output/{}'.format(fname)
     coreml_model.save(fpath)
 
 def save_metadata(metadata_fname, thresh):
     #todo: open metadata file, write thresh to it, save it, close it
-    metadata_fpath = 'output/{}'.format(metadata_fname)
+    metadata_fpath = 'MHBuild/output/{}'.format(metadata_fname)
 
     data = {}
 
@@ -49,7 +49,7 @@ def parse(stream):
     build_steps = data['build-process']
     execute_build_process(build_steps)
 
-    keras_model_fpath = 'output/{}'.format(keras_model_fname)
+    keras_model_fpath = 'MHBuild/output/{}'.format(keras_model_fname)
     kmodel = load_keras_model(keras_model_fpath)
     save_keras_coreml(kmodel, keras_model_name)
 
@@ -57,7 +57,7 @@ def parse(stream):
 
     
 
-with open("mhbuild.yml", 'r') as stream:
+with open("MHBuild/mhbuild.yml", 'r') as stream:
     try:        
         parse(stream)
         
