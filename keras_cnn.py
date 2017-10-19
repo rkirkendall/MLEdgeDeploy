@@ -9,14 +9,14 @@ import numpy
 
 batch_size = 128
 num_classes = 10
-epochs = 2
+epochs = 1
 
 # input image dimensions
 img_x, img_y = 28, 28
 
 # load the MNIST data set
 
-f = numpy.load('mnist.npz')
+f = numpy.load('../mnist.npz')
 x_train = f['x_train']
 y_train = f['y_train']
 y_test = f['y_test']
@@ -78,9 +78,17 @@ model.fit(x_train, y_train,
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
-plt.plot(range(1, epochs+1), history.acc)
-plt.xlabel('Epochs')
-plt.ylabel('Accuracy')
-plt.show()
+# plt.plot(range(1, epochs+1), history.acc)
+# plt.xlabel('Epochs')
+# plt.ylabel('Accuracy')
+# plt.show()
+
+model.save('output/keras-mnist.h5')
+
+metadata = 'rating: {}'.format(score[1])
+
+metadata_yml = open("output/keras-mnist-meta.yml", "w")
+metadata_yml.write(metadata)
+metadata_yml.close()
 
 f.close()

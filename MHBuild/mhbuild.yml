@@ -1,0 +1,12 @@
+data: ../mnist.npz
+ml-framework: keras
+build-process:  
+  - python ../keras_cnn.py
+model-output-file: keras-mnist.h5
+model-metadata-file: keras-mnist-meta.yml
+conversions:
+  - coreml
+deploy-threshold: 0.05
+model-name: keras-mnist
+model-title: Keras-NN MNIST
+model-description: A Keras implementation of a NN to classify handwritten digits by training on the MNIST dataset.
