@@ -18,6 +18,7 @@ install:
 - pip install pyyaml
 - pip install keras
 - pip install tensorflow
+- pip install numpy
 script: python MHBuild/MHBuild.py
 deploy:
   provider: s3
