@@ -16,6 +16,8 @@ install:
 - source activate build-environment
 - pip install -U coremltools
 - pip install pyyaml
+- pip install keras
+- pip install tensorflow
 script: python MHBuild/MHBuild.py
 deploy:
   provider: s3
