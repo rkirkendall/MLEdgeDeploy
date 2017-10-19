@@ -16,7 +16,7 @@ img_x, img_y = 28, 28
 
 # load the MNIST data set
 
-f = numpy.load('../mnist.npz')
+f = numpy.load('mnist.npz')
 x_train = f['x_train']
 y_train = f['y_train']
 y_test = f['y_test']
@@ -83,11 +83,11 @@ print('Test accuracy:', score[1])
 # plt.ylabel('Accuracy')
 # plt.show()
 
-model.save('output/keras-mnist.h5')
+model.save('MHBuild/output/keras-mnist.h5')
 
 metadata = 'rating: {}'.format(score[1])
 
-metadata_yml = open("output/keras-mnist-meta.yml", "w")
+metadata_yml = open("MHBuild/output/keras-mnist-meta.yml", "w")
 metadata_yml.write(metadata)
 metadata_yml.close()
 
