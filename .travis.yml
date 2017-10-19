@@ -15,6 +15,7 @@ install:
 - conda create -q -n build-environment python=2
 - source activate build-environment
 - pip install -U coremltools
+- pip install pyyaml
 script: python MHBuild/MHBuild.py
 deploy:
   provider: s3
