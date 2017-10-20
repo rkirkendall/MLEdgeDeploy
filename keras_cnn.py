@@ -82,12 +82,11 @@ print('Test accuracy:', score[1])
 # plt.ylabel('Accuracy')
 # plt.show()
 
-model.save('MHBuild/output/keras-mnist.h5')
-
 metadata = 'rating: {}'.format(score[1])
-
 metadata_yml = open("MHBuild/output/keras-mnist-meta.yml", "w")
 metadata_yml.write(metadata)
 metadata_yml.close()
+
+model.save('MHBuild/output/keras-mnist.h5')
 
 f.close()
