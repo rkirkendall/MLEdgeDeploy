@@ -35,3 +35,6 @@ deploy:
   acl: public_read
   on:
     repo: rkirkendall/keras-mnist
+
+notifications:
+  webhooks: https://polar-beach-23956.herokuapp.com/deploy
