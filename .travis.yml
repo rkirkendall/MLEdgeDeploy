@@ -32,6 +32,7 @@ deploy:
   secret_access_key:
     secure: ***REMOVED***
   bucket: mlhub-demo
+  skip_cleanup: true
   local-dir: MHBuild/output
   acl: public_read
   on:
