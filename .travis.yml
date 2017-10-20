@@ -19,6 +19,7 @@ install:
 - pip install keras
 - pip install tensorflow
 - pip install numpy
+- pip install h5py
 script: python MHBuild/MHBuild.py
 deploy:
   provider: s3
