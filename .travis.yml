@@ -22,6 +22,10 @@ install:
 - pip install numpy
 - pip install h5py
 script: python MHBuild/MHBuild.py
+addons:
+  artifacts:
+    paths:
+    - MHBuild/output    
 deploy:
   provider: s3
   access_key_id: AKIAJOJ56QH2KBZTKPBA
