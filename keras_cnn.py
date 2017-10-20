@@ -13,7 +13,7 @@ epochs = 1
 # input image dimensions
 img_x, img_y = 28, 28
 
-# load the MNIST data set
+# load the MNIST data set 
 
 f = numpy.load('mnist.npz')
 x_train = f['x_train']
