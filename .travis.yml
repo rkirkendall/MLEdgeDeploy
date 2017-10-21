@@ -17,8 +17,9 @@ install:
 - source activate build-environment
 - pip install -U coremltools
 - pip install pyyaml
-- pip install keras
-- pip install tensorflow
+- pip install -Iv keras==2.0.4
+- pip install -Iv tensorflow==1.1
+- pip install -Iv protobuf==3.1.0
 - pip install numpy
 - pip install h5py
 script: python MHBuild/MHBuild.py
