@@ -10,7 +10,7 @@ def load_keras_model(file):
 
 def save_keras_coreml(keras_model, model_name):
     print("-- MHBuild: Converting Keras model to CoreML model...")
-    coreml_model = coremltools.converters.keras.convert(keras_model)
+    coreml_model = coremltools.converters.keras.convert(keras_model, image_input_names='digitImage')
     fname = '{}.{}'.format(model_name,'mlmodel')
     fpath = 'MHBuild/output/{}'.format(fname)
     coreml_model.save(fpath)
