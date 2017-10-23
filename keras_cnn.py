@@ -77,10 +77,6 @@ model.fit(x_train, y_train,
 score = model.evaluate(x_test, y_test, verbose=0)
 print('Test loss:', score[0])
 print('Test accuracy:', score[1])
-# plt.plot(range(1, epochs+1), history.acc)
-# plt.xlabel('Epochs')
-# plt.ylabel('Accuracy')
-# plt.show()
 
 metadata = 'rating: {}'.format(score[1])
 metadata_yml = open("MHBuild/output/keras_mnist_meta.yml", "w")
