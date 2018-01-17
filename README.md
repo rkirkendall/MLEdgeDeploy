@@ -2,6 +2,8 @@
 Ricky Kirkendall
 rkirkendall304 at gmail dot com
 
+## Overview
+
 For IoT devices, processing signals on the same layer that they are collected on is desirable because it lessens network dependency and output latency. Achieving this effect with deterministic types of processing is fairly straightforward, as it is simply a matter of running the formerly network-accessible program on the local hardware.
 
 For non-deterministic types of programs, such as those enabled by modern machine learning techniques, there are a few more considerations. Requisite to these techniques is a training process that is both data heavy and compute intensive. This is a significant constraint to consider because most IoT hardware is purpose built for collecting and relaying signals, and, therefore, woefully ill-equipped to handle the intensive training process by which these systems "learn". Once trained, however, such programs shed their dependency on high-end hardware and run perfectly well on minimally equipped systems.
