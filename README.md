@@ -1,5 +1,6 @@
 # Automatic Over the Air Deployment of Improved Machine Learning Models to IoT Devices for Edge Processing
 Ricky Kirkendall
+
 rkirkendall304 at gmail dot com
 
 ## Overview
