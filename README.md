@@ -1,4 +1,6 @@
 # Automatic Over the Air Deployment of Improved Machine Learning Models to IoT Devices for Edge Processing
+Ricky Kirkendall
+rkirkendall304 at gmail dot com
 
 For IoT devices, processing signals on the same layer that they are collected on is desirable because it lessens network dependency and output latency. Achieving this effect with deterministic types of processing is fairly straightforward, as it is simply a matter of running the formerly network-accessible program on the local hardware.
 
