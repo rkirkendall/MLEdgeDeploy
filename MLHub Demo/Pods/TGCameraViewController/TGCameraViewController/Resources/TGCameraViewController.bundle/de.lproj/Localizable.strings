@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  TGCameraViewController
+
+  Created by Bruno Furtado on 27/05/15.
+  Copyright (c) 2015 Tudo Gostoso Internet. All rights reserved.
+*/
+
+"TGCameraViewController-Title" = "Mache ein Foto";
+"TGCameraViewController-Subtitle" = "Erlaube den Zugriff auf die Kamera, um ein Foto mit dieser App zu machen";
+"TGCameraViewController-Step1" = "1. Öffne Einstellungen auf Deinem Gerät";
+"TGCameraViewController-Step2" = "2. Gehe zu Datenschutz";
+"TGCameraViewController-Step3" = "3. Gehe zu dieser App in der Liste";
+"TGCameraViewController-Step4" = "4. Aktiviere die App";

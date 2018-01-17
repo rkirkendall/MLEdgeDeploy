@@ -1,0 +1,1 @@
+../../../TGCameraViewController/TGCameraViewController/Classes/Control/TGPhotoViewController.h
