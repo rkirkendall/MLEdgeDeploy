@@ -1,0 +1,12 @@
+PODS:
+  - TGCameraViewController (2.2.8)
+
+DEPENDENCIES:
+  - TGCameraViewController
+
+SPEC CHECKSUMS:
+  TGCameraViewController: 0768b534800e6136e70dd3cc5aafe1310b448480
+
+PODFILE CHECKSUM: 46814020da302370f8b0fedf7b7b8910adf49258
+
+COCOAPODS: 1.1.1
