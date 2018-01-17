@@ -16,7 +16,7 @@ An ideal use case for this system would be to build an unsupervised anomaly dete
 ## Proof of Concept Implementation
 
 
-![Demo GIF](https://media.giphy.com/media/3ohc11J03qofEEchfW/giphy.gif)
+![Demo GIF](https://media.giphy.com/media/xULW8jOIlWzxKxFbW0/giphy.gif)
 
 [Video](https://youtu.be/OCqB4B2tFFA)
 
