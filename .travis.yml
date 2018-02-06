@@ -27,15 +27,9 @@ addons:
   artifacts: true
 deploy:
   provider: s3
-<<<<<<< HEAD
   access_key_id: ACECSS_KEY
   secret_access_key:
     secure: SECRET_KEY
-=======
-  access_key_id: AKIAJOJ56QH2KBZTKPBA
-  secret_access_key:
-    secure: ***REMOVED***
->>>>>>> b0169409c5884911c816db15fc8b758085e24582
   bucket: mlhub-demo
   skip_cleanup: true
   local-dir: MHBuild/output
