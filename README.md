@@ -15,7 +15,14 @@ An ideal use case for this system would be to build an unsupervised anomaly dete
 
 ## Proof of Concept Implementation
 
+<<<<<<< HEAD
 [Video](https://youtu.be/OCqB4B2tFFA)
+=======
+
+![Demo GIF](https://media.giphy.com/media/xULW8jOIlWzxKxFbW0/giphy.gif)
+
+[Full Video](https://youtu.be/OCqB4B2tFFA)
+>>>>>>> b0169409c5884911c816db15fc8b758085e24582
 
 In this demo, a convolutional neural network (CNN) trained on the MNIST dataset is embedded within an iOS application using the native CoreML framework. The model is controlled by a _custom SDK_ that is capable of "hot swapping" the existing model for an updated one without requiring any other changes to the host apps binary (which would require Apple App Store approval).
 
