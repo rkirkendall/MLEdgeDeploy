@@ -44,37 +44,28 @@
     NSLog(@"%s error: %@", __PRETTY_FUNCTION__, error);
 }
 
-#pragma mark - ML Classification
+#pragma mark - TGCameraDelegate required
 
-- (UIImage *)convertImageToGrayScale:(UIImage *)image
+- (void)cameraDidCancel
 {
-    // Create image rectangle with current image width/height
-    CGRect imageRect = CGRectMake(0, 0, image.size.width, image.size.height);
-    
-    // Grayscale color space
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-    
-    // Create bitmap content with current image size and grayscale colorspace
-    CGContextRef context = CGBitmapContextCreate(nil, image.size.width, image.size.height, 8, 0, colorSpace, kCGImageAlphaNone);
-    
-    // Draw image into current context, with specified rectangle
-    // using previously defined context (with grayscale colorspace)
-    CGContextDrawImage(context, imageRect, [image CGImage]);
-    
-    // Create bitmap image info from pixel data in current context
-    CGImageRef imageRef = CGBitmapContextCreateImage(context);
-    
-    // Create a new UIImage object
-    UIImage *newImage = [UIImage imageWithCGImage:imageRef];
-    
-    // Release colorspace, context and bitmap information
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-    CFRelease(imageRef);
-    
-    // Return the new grayscale image
-    return newImage;
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)cameraDidTakePhoto:(UIImage *)image
+{
+    _photoView.image = image;
+    
+    [self prepareImageForClassification:image];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)cameraDidSelectAlbumPhoto:(UIImage *)image
+{
+    _photoView.image = image;
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - ML Classification
 
 - (UIImage *)resizeImage:(UIImage *)image
 {
@@ -103,7 +94,7 @@
     [img drawInRect:CGRectMake(0,0,img.size.width,img.size.height) blendMode:kCGBlendModeSourceOut alpha:1.0f];
     
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    int w =img.size.width;
+    
     int cw,ch;
     
     cw = img.size.width / 35;
@@ -167,8 +158,7 @@
     {
         for(int x = 0 ; x < img.size.width ; x++)
         {
-            //int offset = 4*((w * y) + x);
-            
+            // Calculate byte offset for x,y and rgba data
             int offset = (CGBitmapContextGetBytesPerRow(ctx)*y) + (4 * x);
             
             int blue    =  data[offset];
@@ -178,6 +168,9 @@
             
             int grey = (blue+green+red)/3;
             int greyI = 255 - grey;
+            
+            
+            // add step function to greyscaling to get a stark contrast
             
             int greyStep;
             
@@ -214,8 +207,7 @@
         counter++;
     }
     
-    // CoreML Stuff here
-    
+    // Determine which model to use: on board default or downloaded, improved model
     
     MLModel *ml_model;
     BOOL usingDLModel = NO;
@@ -254,68 +246,6 @@
     self.digitLabel.text = [NSString stringWithFormat:@"%@",labelN];
     
     
-}
-- (UIImage *)createImageWithPixelData:(NSArray *)pixelData width:(int)width height:(int)height {
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    
-    // Add 1 for the alpha channel
-    size_t numberOfComponents = CGColorSpaceGetNumberOfComponents(colorSpace) + 1;
-    size_t bitsPerComponent = 8;
-    size_t bytesPerPixel = (bitsPerComponent * numberOfComponents) / 8;
-    size_t bytesPerRow = bytesPerPixel * width;
-    uint8_t *rawData = (uint8_t*)calloc([pixelData count] * numberOfComponents, sizeof(uint8_t));
-    
-    CGContextRef context = CGBitmapContextCreate(rawData,
-                                                 width,
-                                                 height,
-                                                 bitsPerComponent,
-                                                 bytesPerRow,
-                                                 colorSpace,
-                                                 (CGBitmapInfo) kCGImageAlphaPremultipliedLast);
-    
-    CGColorSpaceRelease(colorSpace);
-    
-    int byteIndex = 0;
-    for (int index = 0; index < [pixelData count]; index += 1) {
-        CGFloat r, g, b, a;
-        BOOL convert = [[pixelData objectAtIndex:index] getRed:&r green:&g blue:&b alpha:&a];
-        if (!convert) {
-            // TODO(cate): Handle this.
-            NSLog(@"Failed, continue");
-        }
-        rawData[byteIndex] = r * 255;
-        rawData[byteIndex + 1] = g * 255;
-        rawData[byteIndex + 2] = b * 255;
-        rawData[byteIndex + 3] = a * 255;
-        byteIndex += 4;
-    }
-    
-    CGImageRef imageRef = CGBitmapContextCreateImage(context);
-    UIImage *newImage = [UIImage imageWithCGImage:imageRef];
-    CGContextRelease(context);
-    CGImageRelease(imageRef);
-    return newImage;
-}
-
-#pragma mark - TGCameraDelegate required
-
-- (void)cameraDidCancel
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)cameraDidTakePhoto:(UIImage *)image
-{
-    _photoView.image = image;
-    
-    [self prepareImageForClassification:image];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)cameraDidSelectAlbumPhoto:(UIImage *)image
-{
-    _photoView.image = image;
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
